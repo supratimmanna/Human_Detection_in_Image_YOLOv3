@@ -19,7 +19,7 @@ font=cv2.FONT_HERSHEY_PLAIN
 
 cap = cv2.VideoCapture('test.mp4')
 
-out = cv2.VideoWriter(
+out_video = cv2.VideoWriter(
     'output_yolov3.avi',
     cv2.VideoWriter_fourcc(*'MJPG'),
     15.,
@@ -79,7 +79,7 @@ while (True):
             cv2.putText(frame,label+" "+str(round(confidences[i],3)),(x,y+30),font,1,(255,0,0),2)
             
     cv2.imshow("Detected_Images",frame)
-    #out.write(frame.astype('uint8'))
+    out_video.write(frame.astype('uint8'))
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 # When everything done, release the capture
